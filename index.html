@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subrata Mondal | 16D Systems Architect</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&family=JetBrains+Mono:wght@400;800&family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --q-cyan: #00ffcc;
+            --q-magenta: #ff00ff;
+            --q-void: #05020a;
+            --data-blue: #00d4ff;
+            --active-lime: #00ff41;
+        }
+        body { font-family: 'Inter', sans-serif; background-color: var(--q-void); color: #fff; overflow-x: hidden; }
+        .glass { background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.1); }
+        .gradient-text { background: linear-gradient(90deg, var(--q-cyan), var(--q-magenta)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+
+        /* HYPER-DIMENSION VIEWPORT */
+        #hyper-dimension-viewport {
+            width: 100%; height: 700px; background: #000;
+            display: flex; align-items: center; justify-content: center;
+            perspective: 1200px; overflow: hidden; position: relative; border-radius: 30px;
+        }
+        #vortex-canvas { position: absolute; width: 100%; height: 100%; opacity: 0.4; pointer-events: none; }
+        .manifold { position: relative; width: 300px; height: 300px; transform-style: preserve-3d; animation: hyperFloat 25s infinite linear; }
+        @keyframes hyperFloat { 0% { transform: rotateX(0) rotateY(0) rotateZ(0); } 100% { transform: rotateX(360deg) rotateY(720deg) rotateZ(360deg); } }
+        .q-plate {
+            position: absolute; width: 220px; height: 80px; background: rgba(0, 255, 204, 0.05);
+            border: 1px solid var(--q-cyan); backdrop-filter: blur(5px);
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            transition: all 0.5s ease; cursor: pointer;
+        }
+        .q-plate:hover { background: var(--q-cyan); box-shadow: 0 0 40px var(--q-cyan); transform: scale(1.3) translateZ(100px) !important; z-index: 100; }
+        .q-plate:hover * { color: #000 !important; }
+
+        /* DIMENSIONAL PLACEMENT */
+        .q-plate:nth-child(1) { transform: rotateY(0deg) translateZ(250px); }
+        .q-plate:nth-child(2) { transform: rotateY(72deg) translateZ(250px) rotateX(45deg); }
+        .q-plate:nth-child(3) { transform: rotateY(144deg) translateZ(250px) rotateZ(90deg); }
+        .q-plate:nth-child(4) { transform: rotateY(216deg) translateZ(250px) rotateX(-45deg); }
+        .q-plate:nth-child(5) { transform: rotateY(288deg) translateZ(250px) rotateZ(-90deg); }
+
+        /* SYNAPSE HUB */
+        #sf-synapse-hub { width: 100%; height: 500px; background: #020205; display: flex; border-radius: 20px; overflow: hidden; border: 1px solid #1e293b; }
+        .network-viewport { flex: 1; position: relative; background-image: radial-gradient(circle at center, #111 1px, transparent 1px); background-size: 25px 25px; }
+        .node { position: absolute; width: 40px; height: 40px; border: 2px solid var(--data-blue); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; background: #000; transition: 0.3s; }
+        .node:hover { border-color: var(--active-lime); box-shadow: 0 0 15px var(--active-lime); }
+
+        /* MODALS */
+        .custom-modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 9999; align-items: center; justify-content: center; backdrop-filter: blur(10px); }
+    </style>
+</head>
+<body class="scroll-smooth">
+
+    <nav class="fixed w-full z-[100] glass px-8 py-4 flex justify-between items-center">
+        <div class="font-['Orbitron'] font-black text-xl tracking-tighter">SUBRATA<span class="text-[var(--q-cyan)]">.CORE</span></div>
+        <div class="hidden md:flex space-x-8 text-[10px] font-bold tracking-[0.3em] uppercase">
+            <a href="#hyper" class="hover:text-[var(--q-cyan)] transition">Dimensions</a>
+            <a href="#synapse" class="hover:text-[var(--active-lime)] transition">Synapse</a>
+            <a href="mailto:subratamondal.cse2023@nsec.ac.in" class="text-[var(--q-magenta)]">Initialize Contact</a>
+        </div>
+    </nav>
+
+    <section class="h-screen flex flex-col justify-center items-center text-center px-4">
+        <h1 class="font-['Orbitron'] text-5xl md:text-8xl font-black mb-4">SYSTEMS <br><span class="gradient-text">ARCHITECT</span></h1>
+        <p class="font-['JetBrains_Mono'] text-slate-500 text-sm md:text-base tracking-widest uppercase">MERN // Artificial Intelligence // 16D Visualizations</p>
+    </section>
+
+    <section id="hyper" class="py-20 px-6 max-w-6xl mx-auto">
+        <div class="mb-12">
+            <h2 class="font-['Orbitron'] text-3xl font-black mb-2 uppercase">Advanced Operations</h2>
+            <p class="text-slate-400 font-['JetBrains_Mono'] text-xs uppercase tracking-widest">Dimensionally Scaled Business Logic</p>
+        </div>
+        
+        <div id="hyper-dimension-viewport">
+            <canvas id="vortex-canvas"></canvas>
+            <div class="manifold" id="manifold"></div>
+        </div>
+    </section>
+
+    <section id="synapse" class="py-20 px-6 max-w-6xl mx-auto">
+        <div class="mb-12 text-right">
+            <h2 class="font-['Orbitron'] text-3xl font-black mb-2 uppercase">Neural Infrastructure</h2>
+            <p class="text-slate-400 font-['JetBrains_Mono'] text-xs uppercase tracking-widest">Backend Logic & Data Flow</p>
+        </div>
+
+        <div id="sf-synapse-hub">
+            <div class="network-viewport" id="viewport"></div>
+            <div class="w-72 bg-[#0a0a15] p-8 border-l border-sky-900/50 flex flex-col">
+                <div id="disp-id" class="text-[10px] text-[var(--active-lime)] font-mono mb-2">STATUS: IDLE</div>
+                <div id="disp-title" class="font-['Orbitron'] text-lg font-bold mb-4 uppercase">Node Selection</div>
+                <div id="disp-desc" class="text-slate-500 text-xs leading-relaxed flex-grow">Hover over a synapse node to decode system specifications.</div>
+                <div class="pt-4 border-t border-slate-800 text-[9px] font-mono text-sky-500">ENCRYPTION: ACTIVE<br>IP: 192.168.1.XX</div>
+            </div>
+        </div>
+    </section>
+
+    <div id="collapse-modal" class="custom-modal">
+        <div class="border-2 border-[var(--q-magenta)] p-10 max-w-lg text-center bg-black">
+            <h2 id="m-title" class="font-['Orbitron'] text-3xl text-[var(--q-magenta)] mb-4"></h2>
+            <p id="m-desc" class="text-slate-300 font-['JetBrains_Mono']"></p>
+            <button class="mt-8 px-8 py-3 bg-[var(--q-cyan)] text-black font-black font-['Orbitron'] text-xs tracking-widest hover:bg-white transition" onclick="closeQ()">COLLAPSE_DIMENSION</button>
+        </div>
+    </div>
+
+    <footer class="py-20 text-center border-t border-slate-900 mt-20">
+        <div class="flex justify-center space-x-12 mb-8">
+            <a href="https://github.com/subratamondal1029" class="text-slate-500 hover:text-[var(--q-cyan)] transition text-2xl"><i class="fab fa-github"></i></a>
+            <a href="#" class="text-slate-500 hover:text-[var(--q-magenta)] transition text-2xl"><i class="fab fa-linkedin"></i></a>
+        </div>
+        <p class="font-['JetBrains_Mono'] text-[10px] text-slate-700 tracking-[0.5em] uppercase">Built for the Next Generation of the Web</p>
+    </footer>
+
+    <script>
+        /* HYPER DIMENSION LOGIC */
+        const hyperServices = [
+            { n: "HR Management", d: "Strategic personnel oversight and recruitment pipelines.", id: "41" },
+            { n: "Supply Chain", d: "End-to-end logistics and inventory optimization systems.", id: "47" },
+            { n: "Risk Analysis", d: "Quantum-level business risk assessment and mitigation.", id: "45" },
+            { n: "Payroll Systems", d: "Automated, secure financial processing for enterprises.", id: "43" },
+            { n: "Compliance", d: "Automated regulatory alignment and legal monitoring.", id: "44" }
+        ];
+
+        const manifold = document.getElementById('manifold');
+        hyperServices.forEach((s, i) => {
+            const plate = document.createElement('div');
+            plate.className = 'q-plate';
+            plate.onclick = () => {
+                document.getElementById('m-title').innerText = s.n;
+                document.getElementById('m-desc').innerText = s.d;
+                document.getElementById('collapse-modal').style.display = 'flex';
+                manifold.style.animationPlayState = 'paused';
+            };
+            plate.innerHTML = `<span class="text-[8px] text-[var(--q-magenta)] font-bold mb-1">DATA_STREAM_0${s.id}</span><div class="q-title font-bold text-center">${s.n}</div>`;
+            manifold.appendChild(plate);
+        });
+
+        function closeQ() {
+            document.getElementById('collapse-modal').style.display = 'none';
+            manifold.style.animationPlayState = 'running';
+        }
+
+        /* VORTEX ANIMATION */
+        const canvas = document.getElementById('vortex-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        canvas.width = window.innerWidth; canvas.height = 700;
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width; this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2; this.speedX = (Math.random() - 0.5) * 2; this.speedY = (Math.random() - 0.5) * 2;
+            }
+            update() { this.x += this.speedX; this.y += this.speedY; if (this.size > 0.1) this.size -= 0.01; }
+            draw() { ctx.fillStyle = '#00ffcc'; ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); ctx.fill(); }
+        }
+
+        function animateVortex() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            if (particles.length < 100) particles.push(new Particle());
+            particles.forEach((p, i) => { p.update(); p.draw(); if (p.size <= 0.1) particles.splice(i, 1); });
+            requestAnimationFrame(animateVortex);
+        }
+
+        /* SYNAPSE LOGIC */
+        const techNodes = [
+            { n: "MERN Architecture", d: "Full-stack integration using MongoDB, Express, React, Node.js.", id: "88", x: 20, y: 30 },
+            { n: "AI Engines", d: "Neural networks, OCR processing, and LLM implementations.", id: "99", x: 60, y: 20 },
+            { n: "Cloud Matrix", d: "AWS/Vercel serverless deployment and CI/CD pipelines.", id: "77", x: 40, y: 70 },
+            { n: "Data Security", d: "JWT, OAuth2, and AES encryption protocols.", id: "66", x: 80, y: 50 }
+        ];
+
+        const viewport = document.getElementById('viewport');
+        techNodes.forEach(s => {
+            const node = document.createElement('div');
+            node.className = 'node';
+            node.style.left = s.x + '%'; node.style.top = s.y + '%';
+            node.innerHTML = `<span class="text-[8px] text-sky-400 font-bold font-mono">${s.id}</span>`;
+            node.addEventListener('mouseenter', () => {
+                document.getElementById('disp-id').innerText = `UNIT_ID: SYSTEM_${s.id}`;
+                document.getElementById('disp-title').innerText = s.n;
+                document.getElementById('disp-desc').innerText = s.d;
+            });
+            viewport.appendChild(node);
+        });
+
+        window.onload = () => animateVortex();
+    </script>
+</body>
+</html>
